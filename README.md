@@ -3,8 +3,35 @@
 ## Overview
 
 Welcome to our book exchange platform! 
-## Core Features
 
+## Setup Instructions
+
+1. **Clone the Repository**:
+   git clone <repository-url>
+2. **Install Dependencies**:
+    cd p2pBookExchange
+    npm install
+
+3. **Set Up Backend**:
+- Ensure you have Node.js and MongoDB installed.
+- Configure environment variables (e.g., database connection URI, JWT secret).
+- Run the backend server:
+  ```
+  npm start
+  ```
+4. **Set Up Frontend**:
+- Navigate to the frontend directory.
+- Install dependencies and start the frontend server.
+  ```
+  cd frontend
+  npm install
+  npm start
+  ```
+5. **Access the Application**:
+- Open your web browser and navigate to `http://localhost:3000` to access the application.
+
+
+## Core Features
 1. **User Authentication**:
    - Allows users to register, login, and logout securely.
    - Password hashing implemented for enhanced security.
