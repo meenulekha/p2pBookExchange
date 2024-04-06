@@ -1,24 +1,3 @@
-<!-- client.html -->
-
-<script src="/socket.io/socket.io.js"></script>
-<script src="client.js"></script>
-
-<script>
-    const socket = io();
-
-    // Emit chat messages
-    function sendMessage(message) {
-        socket.emit('chat message', message);
-    }
-
-    // Handle incoming messages
-    socket.on('chat message', (message) => {
-        console.log('Received message:', message);
-        // Display the message in the UI
-    });
-</script>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +12,26 @@
         <button id="send-button">Send</button>
     </div>
 
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        // Emit chat messages
+        function sendMessage(message) {
+            socket.emit('chat message', message);
+        }
+
+        //handle incoming messages
+        socket.on('chat message', (message) => {
+            console.log('Received message:', message);
+            // Display the message in the UI
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            document.getElementById('chat-messages').appendChild(messageElement);
+        });
+    </script>
+
     <script src="client.js"></script>
 </body>
 </html>
