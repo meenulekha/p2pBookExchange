@@ -3,35 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Application</title>
+    <title>P2P Book Exchange</title>
+    
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-messages"></div>
-        <input type="text" id="message-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
-    </div>
+    <header>
+        <h1>P2P Book Exchange</h1>
+        <div class="navigation-buttons">
+            <button onclick="navigateTo('authentication')">Login/Register</button>
+            <button onclick="navigateTo('book-listing')">Browse Books</button>
+            <button onclick="navigateTo('user-profile')">Profile</button>
+        </div>
+    </header>
 
-    <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
+    <main>
+        <!-- user authentication -->
+        <section id="authentication">
+            <!-- Login form -->
+            <form id="login-form">
+                <h2>Login</h2>
+                <!-- Input fields for username and password -->
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
 
-    <script>
-        const socket = io();
+            <form id="registration-form">
+                <h2>Register</h2>
+                <input type="text" id="reg-username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </section>
 
-        // Emit chat messages
-        function sendMessage(message) {
-            socket.emit('chat message', message);
-        }
+        <section id="book-listing">
+            <h2>Book Listing</h2>
+            <div id="book-list"></div>
+        </section>
 
-        //handle incoming messages
-        socket.on('chat message', (message) => {
-            console.log('Received message:', message);
-            // Display the message in the UI
-            const messageElement = document.createElement('div');
-            messageElement.textContent = message;
-            document.getElementById('chat-messages').appendChild(messageElement);
-        });
-    </script>
-
-    <script src="client.js"></script>
+        <section id="user-profile">
+            <div id="profile-info">
+                <h3>Profile Information</h3>
+                <p><strong>Username:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Catergory:</strong> <span category="category"></span></p>
+            </div>
+        </section>
+        <section id="schedule-meetup">
+            <h2>Schedule Meetup</h2>
+            <form id="schedule-meetup-form">
+                <div>
+                    <label for="meetup-date">Date:</label>
+                    <input type="date" id="meetup-date" required>
+                </div>
+                <div>
+                    <label for="meetup-location">Location:</label>
+                    <input type="text" id="meetup-location" placeholder="Enter location" required>
+                </div>
+                <button type="submit">Schedule Meetup</button>
+            </form>
+        </section>
+        </section>
+    </main>
 </body>
 </html>
