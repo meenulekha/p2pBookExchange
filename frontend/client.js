@@ -1,4 +1,3 @@
-
 const socket = io();
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
@@ -20,7 +19,6 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 });
 
 function login(username, password) {
-    // Replace 'your-backend-url/login' with the actual URL of your login endpoint
     fetch('placeholderbackendurl/login', {
         method: 'POST',
         headers: {
@@ -53,17 +51,13 @@ document.getElementById('registration-form').addEventListener('submit', function
     const email = document.getElementById('email').value;
     const regPassword = document.getElementById('reg-password').value;
 
-    // Perform validation if needed
-
-    // Send the registration data to the backend for user registration
     register(regUsername, email, regPassword);
 });
 
 // Function to send registration data to the backend for user registration
 function register(username, email, password) {
     // Make an API request to your backend for user registration
-    // Replace 'your-backend-url/register' with the actual URL of your registration endpoint
-    fetch('your-backend-url/register', {
+    fetch('example-backend-url/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -76,18 +70,13 @@ function register(username, email, password) {
     })
     .then(response => {
         if (response.ok) {
-            // Registration successful, perform actions (e.g., display success message)
             console.log('Registration successful');
-            // Display success message to the user
         } else {
-            // Registration failed, display error message
             console.error('Registration failed');
-            // Display error message to the user
         }
     })
     .catch(error => {
         console.error('Error during registration:', error);
-        // Handle error (e.g., display error message to the user)
     });
 }
 

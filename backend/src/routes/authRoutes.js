@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Import your User model
+const User = require('../models/User'); 
 const bcrypt = require('bcryptjs');
 const { authenticateJWT } = require('../middleware/authMiddleware');
 
@@ -8,7 +8,7 @@ router.post('/register', async (req, res) => {
     try {
       const { username, email, password } = req.body;
       
-      // check if username or email already exists
+      // check if username or email exists
       const existingUser = await User.findOne({ $or: [{ username }, { email }] });
       if (existingUser) {
         return res.status(400).json({ message: 'Username or email already exists.' });
@@ -18,14 +18,12 @@ router.post('/register', async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
   
-      //create a new user instance
       const newUser = new User({
         username,
         email,
         password: hashedPassword
       });
   
-      // save the new user to the database
       await newUser.save();
   
       res.status(201).json({ message: 'User registered successfully.' });
@@ -55,7 +53,7 @@ function generateJWTToken(user) {
     };
   
     const options = {
-      expiresIn: '1h' // Token expiration time
+      expiresIn: '1h' 
     };
   
     return jwt.sign(payload, secretKey, options);

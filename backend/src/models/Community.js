@@ -6,7 +6,7 @@ const communitySchema = new mongoose.Schema({
     required: true
   },
   description: String,
-  // Add other fields as needed
+  size: Int32Array,
 });
 
 const Community = mongoose.model('Community', communitySchema);
